@@ -13,6 +13,6 @@ Main program: bikeshare.py
 Data files: chicago.csv, new_york_city.csv, washington.csv
 
 ### Credits
-Bikeshare.py template provided by Udacity.com.
+Bikeshare.py template provided by Udacity (www.udacity.com).
 
 Bikeshare data provided by Motivate (www.motivateco.com).
