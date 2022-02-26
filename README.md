@@ -9,8 +9,10 @@ This program is designed to be used by analysts in designing and marketing an ur
 
 ### Files used
 Main program: bikeshare.py
+
 Data files: chicago.csv, new_york_city.csv, washington.csv
 
 ### Credits
 Bikeshare.py template provided by Udacity.com.
+
 Bikeshare data provided by Motivate (www.motivateco.com).
