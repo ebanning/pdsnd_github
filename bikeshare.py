@@ -122,7 +122,7 @@ def time_stats(df):
     popular_hour = df['hour'].mode()[0]
     print('Most Frequent Start Hour: ', popular_hour)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
@@ -145,7 +145,7 @@ def station_stats(df):
     popular_combination = df['Station Combination'].mode()[0]
     print('Most Popular Combination of Start and End Stations: ', popular_combination)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
@@ -163,7 +163,7 @@ def trip_duration_stats(df):
     mean_trip_time = df['Trip Duration'].mean()
     print('The mean travel time is ', mean_trip_time, ' seconds.')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
@@ -195,7 +195,7 @@ def user_stats(df):
     except:
         print('There is no birth year data available for Washington.')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
