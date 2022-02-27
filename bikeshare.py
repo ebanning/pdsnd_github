@@ -209,11 +209,7 @@ def display_data(df):
         df = df.reset_index()
         start_row = 0
         while True:
-            print(df.loc[start_row])
-            print(df.loc[start_row + 1])
-            print(df.loc[start_row + 2])
-            print(df.loc[start_row + 3])
-            print(df.loc[start_row + 4])
+            print(df[start_row:start_row + 5])
             more_data = input('Would you like to display the next 5 rows of data? Enter yes or no. ').lower()
             if more_data != 'yes':
                 break
