@@ -16,9 +16,9 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     """ Get user input for city (chicago, new york city, washington). """
-    
+
     while True:
         try:
             city = input("Which city would you like to analyze? Type Chicago, New York City, or Washington.  ").lower()
@@ -27,10 +27,10 @@ def get_filters():
             print('Please type Chicago, New York City, or Washington only. ')
         except:
             print("I don't understand your answer. Please try again. ")
-    
+
 
     """ Get user input for month (all, january, february, ... , june) """
-    
+
     while True:
         try:
             month = input("Which month would you like to filter by? Type a month from January throuugh June, or type 'all' to view all months. " ).lower()
@@ -41,7 +41,7 @@ def get_filters():
             print("I don't understand your answer. Please try again. ")
 
     """ Get user input for day of week (all, monday, tuesday, ... sunday) """
-    
+
     while True:
         try:
             day = input("Which day would you like to filter by? Type a day of the week, or type 'all' to view all days. " ).lower()
@@ -66,7 +66,7 @@ def load_data(city, month, day):
     Returns:
         df - pandas DataFrame containing city data filtered by month and day
     """
-    
+
     """ Load data file into a dataframe """
     df = pd.read_csv(CITY_DATA[city])
 
@@ -83,7 +83,7 @@ def load_data(city, month, day):
         """ Use the index of the months list to get the corresponding int """
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-    
+
         """ Filter by month to create the new dataframe """
         df = df[df['month'] == month]
 
@@ -91,7 +91,7 @@ def load_data(city, month, day):
     if day != 'all':
         """ Filter by day of week to create the new dataframe """
         df = df[df['day_of_week'] == day.title()]
-    
+
     return df
 
 
@@ -122,7 +122,7 @@ def time_stats(df):
     popular_hour = df['hour'].mode()[0]
     print('Most Frequent Start Hour: ', popular_hour)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
@@ -145,7 +145,7 @@ def station_stats(df):
     popular_combination = df['Station Combination'].mode()[0]
     print('Most Popular Combination of Start and End Stations: ', popular_combination)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
@@ -157,13 +157,13 @@ def trip_duration_stats(df):
 
     """ Display total travel time """
     total_trip_time = df['Trip Duration'].sum()
-    print('The total travel time is ', total_trip_time)
+    print('The total travel time is ', total_trip_time, ' seconds.')
 
     """ Display mean travel time """
     mean_trip_time = df['Trip Duration'].mean()
-    print('The mean travel time is ', mean_trip_time)
+    print('The mean travel time is ', mean_trip_time, ' seconds.')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
 
 
@@ -181,7 +181,7 @@ def user_stats(df):
     try:
         print('Counts of user gender: ')
         print(df['Gender'].value_counts())
-    except: 
+    except:
         print('There is no gender data available for Washington.')
 
     """ Display earliest, most recent, and most common year of birth """
@@ -195,13 +195,13 @@ def user_stats(df):
     except:
         print('There is no birth year data available for Washington.')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (round(time.time() - start_time, 4)))
     print('-'*40)
-    
+
 
 def display_data(df):
     """Displays 5 rows of data at a time based on user input."""
-    
+
     display = input('Would you like to display the first 5 rows of data? Enter yes or no. ').lower()
     if display != 'yes':
         print("Okay, we won't display any data.")
@@ -209,11 +209,7 @@ def display_data(df):
         df = df.reset_index()
         start_row = 0
         while True:
-            print(df.loc[start_row])
-            print(df.loc[start_row + 1])
-            print(df.loc[start_row + 2])
-            print(df.loc[start_row + 3])
-            print(df.loc[start_row + 4])
+            print(df[start_row:start_row + 5])
             more_data = input('Would you like to display the next 5 rows of data? Enter yes or no. ').lower()
             if more_data != 'yes':
                 break
